@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "mcp-obsidian": {
+      "command": "npx",
+      "args": ["-y", "mcp-obsidian", "YOUR_VAULT_PATH_HERE"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
