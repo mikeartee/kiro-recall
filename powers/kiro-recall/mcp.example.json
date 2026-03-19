@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "mcp-obsidian": {
+    "mcpvault": {
       "command": "npx",
-      "args": ["-y", "mcp-obsidian", "YOUR_VAULT_PATH_HERE"],
+      "args": ["-y", "@bitbonsai/mcpvault", "--vault", "YOUR_VAULT_PATH_HERE"],
       "disabled": false,
       "autoApprove": []
     }

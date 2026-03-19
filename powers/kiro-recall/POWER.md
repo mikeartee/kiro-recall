@@ -1,7 +1,7 @@
 ---
 name: "kiro-recall"
 displayName: "kiro-recall"
-description: "Forces your personal knowledge vault into every Kiro session before you type a single word. Wraps mcp-obsidian to inject relevant notes as ambient context, and captures new knowledge mid-session via /recall."
+description: "Forces your personal knowledge vault into every Kiro session before you type a single word. Wraps @bitbonsai/mcpvault to inject relevant notes as ambient context, and captures new knowledge mid-session via /recall."
 keywords: ["vault", "notes", "recall", "second brain", "knowledge base", "context", "obsidian", "capture", "zettelkasten"]
 author: "Mike Rewiri-Thorsen"
 ---
@@ -10,11 +10,11 @@ author: "Mike Rewiri-Thorsen"
 
 ## Overview
 
-kiro-recall solves the passive steering file problem. Steering files are passive — Kiro reads them if it feels like it and skips them constantly. Every session without kiro-recall burns tokens re-establishing context: who you are, what the project is, what decisions were already made.
+kiro-recall solves the passive steering file problem. Steering files are passive — Kiro reads them if it feels like it and skips them constantly. Every session without kiro-recall burns time re-establishing context: who you are, what the project is, what decisions were already made.
 
-kiro-recall makes context injection an active hook-based event, not a suggestion. A session start hook fires before your first prompt, reads your vault, and injects the relevant notes as ambient context. A manual capture hook lets you write structured notes to your inbox mid-session with a single `/recall` command.
+kiro-recall makes context injection an active hook-based event, not a suggestion. A session start hook fires before your first prompt, reads your vault locally via MCP, and injects the relevant notes as ambient context before your prompt reaches the model. You see a one-line summary of what was loaded. A manual capture hook lets you write structured notes to your inbox mid-session with a single `/recall` command.
 
-The vault is a plain folder of markdown files. Obsidian is not required — it's optional for visual graph browsing only.
+The vault is a plain folder of markdown files on your disk. No cloud calls to read your own notes. No data leaving your machine. Obsidian is not required — it's optional for visual graph browsing only.
 
 ## Available Steering Files
 
@@ -31,7 +31,7 @@ The vault is a plain folder of markdown files. Obsidian is not required — it's
     - macOS/Linux example: `/Users/yourname/vault`
     - Windows example: `C:\\Users\\yourname\\vault`
   - The folder does not need to exist yet — kiro-recall will scaffold the structure on first run.
-  - Once set, your `mcp.json` args should look like: `"--config", "{\"vaultPath\":\"/Users/yourname/vault\"}"`
+  - Once set, your `mcp.json` args should look like: `"--vault", "/Users/yourname/vault"`
 
 ## Vault Structure
 
@@ -78,7 +78,8 @@ Type `/recall` at any point. kiro-recall prompts you to describe what was built,
 1. Install kiro-recall from the Kiro Powers marketplace
 2. Edit `mcp.json` and replace `YOUR_VAULT_PATH_HERE` with your vault path
 3. Restart Kiro or reconnect the MCP server from the MCP Server view
-4. On your next session, the hook fires and scaffolds your vault structure if it doesn't exist yet
+4. Run the Vault Scaffold hook once to create your folder structure
+5. On your next session, the hook fires and loads vault context automatically
 
 ### First session
 Your vault will be empty (Cold Vault). You'll see:
