@@ -134,6 +134,15 @@ required. Obsidian is optional for visual browsing only.
 4. Run the Vault Scaffold hook once to create your folder structure
 5. Session start hook fires on your next first prompt, vault context loads automatically
 
+**To make hooks fire in every workspace (recommended):** Copy the hook files
+from `.kiro/hooks/` to your user-level hooks directory:
+- Windows: `C:\Users\{you}\.kiro\hooks\`
+- macOS/Linux: `~/.kiro/hooks/`
+
+Also add `mcpvault` to your user-level MCP config (`~/.kiro/settings/mcp.json`)
+so the hooks can reach your vault from any workspace. See the `mcp.example.json`
+in this repo for the server definition to copy in.
+
 ## Why Not Just Use Steering Files?
 
 Steering files are passive. Kiro reads them if it feels like it. kiro-recall
