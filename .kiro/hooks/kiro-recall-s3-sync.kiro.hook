@@ -1,0 +1,13 @@
+{
+  "name": "kiro-recall: S3 Sync",
+  "version": "1.0.0",
+  "description": "Fires at session end. Syncs new/changed session capture files from vault inbox to S3. Skips silently if sync-config.json is not present.",
+  "when": {
+    "type": "agentStop"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "if exist sync\\sync-config.json (python sync/vault_s3_sync.py) else (echo kiro-recall S3 sync skipped: sync-config.json not found)",
+    "timeout": 60
+  }
+}
