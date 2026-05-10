@@ -1,7 +1,7 @@
 {
   "name": "kiro-recall: S3 Sync",
-  "version": "1.0.0",
-  "description": "Fires at session end. Syncs new/changed session capture files from vault inbox to S3. Skips silently if sync-config.json is not present.",
+  "version": "1.1.0",
+  "description": "Disabled — S3 sync target (Ami) no longer exists. Re-enable and update sync-config.json with a valid bucket when needed.",
   "when": {
     "type": "agentStop"
   },
@@ -9,5 +9,6 @@
     "type": "runCommand",
     "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Dev\\kiro-recall\\sync\\s3-sync.ps1\"",
     "timeout": 60
-  }
+  },
+  "disabled": true
 }
