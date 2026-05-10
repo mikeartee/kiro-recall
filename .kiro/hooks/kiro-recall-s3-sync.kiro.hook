@@ -7,7 +7,7 @@
   },
   "then": {
     "type": "runCommand",
-    "command": "powershell -Command \"if (Test-Path 'C:\\Dev\\kiro-recall\\sync\\sync-config.json') { python 'C:\\Dev\\kiro-recall\\sync\\vault_s3_sync.py' } else { Write-Host 'kiro-recall S3 sync skipped: sync-config.json not found' }\"",
+    "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Dev\\kiro-recall\\sync\\s3-sync.ps1\"",
     "timeout": 60
   }
 }
